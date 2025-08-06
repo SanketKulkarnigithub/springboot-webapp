@@ -25,6 +25,6 @@ RUN mvn clean package -DskipTests
 # Run stage
 FROM gcr.io/distroless/java17-debian11
 WORKDIR /app
-COPY --from=build /app/target/springboot-webapp-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/springboot-webapp-*-SNAPSHOT.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
