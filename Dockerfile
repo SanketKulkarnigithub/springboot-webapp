@@ -15,7 +15,7 @@
 #   - Sets the default command to run the Spring Boot application JAR.
 # -----------------------------------------------------------------------------
 # Build stage
-FROM maven:3.9.6-temurin-17 AS build
+FROM 3.9-eclipse-temurin-17-alpine AS build
 # Set the working directory inside the container to /app
 WORKDIR /app
 COPY pom.xml .
