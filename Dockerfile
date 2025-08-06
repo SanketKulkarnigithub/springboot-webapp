@@ -15,7 +15,7 @@
 #   - Sets the default command to run the Spring Boot application JAR.
 # -----------------------------------------------------------------------------
 # Build stage
-FROM maven:3.9.6-openjdk-17 AS build
+FROM maven:3.9.6-temurin-17 AS build
 # Set the working directory inside the container to /app
 WORKDIR /app
 COPY pom.xml .
@@ -23,7 +23,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Run stage
-FROM openjdk:gcr.io/distroless/java17-debian11
+FROM gcr.io/distroless/java17-debian11
 WORKDIR /app
 COPY --from=build /app/target/springboot-webapp-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
